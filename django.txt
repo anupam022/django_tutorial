@@ -4,3 +4,21 @@ Django is  Python web development framework.
 "Batteries included" ==> Offers built-in solutions and features for basically all problems.
 It's customizable and flexible. 
 It is used for building real websites.
+
+Command to create project in Django
+-- django-admin startproject projectname
+
+To run django project
+ -- python manage.py runserver
+
+To create an APP in django project 
+    -- python manage.py startapp appname
+
+What are "Urls" (or "Routes") & "Views" ?
+    -- google.com/ -->url (uniform resource locator), google.com/images
+    --Url - Action mappings which ensure that certain results are "achieved"
+    when certain Urls are entered by the user.
+Views --> The logic is executed for different URLs (Http Method),
+Code that handle  request and return responses.
+Views are responsible for processing requests (parsing the URLs
+Http Method and potential request data) and creating a response.
