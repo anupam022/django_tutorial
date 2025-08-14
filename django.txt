@@ -1,0 +1,6 @@
+What is Django ?
+
+Django is  Python web development framework. 
+"Batteries included" ==> Offers built-in solutions and features for basically all problems.
+It's customizable and flexible. 
+It is used for building real websites.
