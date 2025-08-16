@@ -22,3 +22,9 @@ Views --> The logic is executed for different URLs (Http Method),
 Code that handle  request and return responses.
 Views are responsible for processing requests (parsing the URLs
 Http Method and potential request data) and creating a response.
+
+Reverse Function:The reverse() function in Django is a utility function used for URL reversing. \
+It allows you to dynamically generate URLs based on the name of a URL pattern defined in 
+your urls.py files, 
+rather than hardcoding the URL paths directly. This promotes the "Don't Repeat Yourself" 
+(DRY) principle and makes your application more maintainable and robust. 
