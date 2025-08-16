@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect,Http404
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # A dictionary to hold the challenge for each month for easy lookup.
 monthly_challenges_data = {
@@ -10,7 +11,7 @@ monthly_challenges_data = {
     "april": "Create and find a problem.",
     "may": "Learn a new skill in May!",
     "june": "Practice Django for 30 minutes every day.",
-    "july": "birthday month",
+    "july": None,
     "august": "Independence day",
     "september":"Learn AWS",
     "october": "Gandhi Jayanti",
@@ -24,15 +25,18 @@ def index(request):
     list_items = ""
     months = list(monthly_challenges_data.keys())
 
+    return render(request, "challenges\index.html",{
+        "months":months
+    })
 
-    for month in months:
-        capitalized_month = month.capitalize()
-        # Use reverse() to dynamically build the URL path
-        month_path = reverse("month-challenge", args=[month])
-        list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+    # for month in months:
+    #     capitalized_month = month.capitalize()
+    #     # Use reverse() to dynamically build the URL path
+    #     month_path = reverse("month-challenge", args=[month])
+    #     list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
 
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    # response_data = f"<ul>{list_items}</ul>"
+    # return HttpResponse(response_data)
 
 def monthly_challenge_by_number(request, month):
     
@@ -47,7 +51,18 @@ def monthly_challenge(request, month):
     """Handles the logic for a single month's challenge page."""
     try:
         challenge_text = monthly_challenges_data[month]
-        return HttpResponse(f"<h1>{challenge_text}</h1>")
+        return render(request, "challenges/challenge.html",{
+            "text":challenge_text,
+            "month_name": month.capitalize()
+        }) #This will work same as below code 
+        # {
+        #         "text":challenge_text     Context param we can pass multiple context and use in html file
+        #     }
+        # response_data = f"<h1>{challenge_text}</h1>"
+        # response_data = render_to_string("challenges/challenge.html")
+        # return HttpResponse(response_data)
     except KeyError:
         # Return a 404 error if the month is not in our dictionary
-        return HttpResponseNotFound("<h1>This month is not supported!</h1>")
+        # response_data = render_to_string("404.html")
+        # return HttpResponseNotFound(response_data)
+        raise Http404("We could not found page!")

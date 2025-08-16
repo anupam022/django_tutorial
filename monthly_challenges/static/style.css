@@ -1,0 +1,35 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+header {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0 15px;
+}

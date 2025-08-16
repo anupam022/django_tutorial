@@ -28,3 +28,49 @@ It allows you to dynamically generate URLs based on the name of a URL pattern de
 your urls.py files, 
 rather than hardcoding the URL paths directly. This promotes the "Don't Repeat Yourself" 
 (DRY) principle and makes your application more maintainable and robust. 
+
+To apply html file in django we need to create folder templates in app file
+which is here challenges and in that templates folder create subfolder as challenges
+and then create html file with app name 
+To use the html file in views i will import 
+--from django.template.loader import render_to_string 
+response_data = render_to_string("challenges/challenge.html")
+
+render_to_string ==> it will convert something to string
+
+DTL Django Template Language ==> Enhanced HTML file to create dynamic pages
+Standard HTML syntax and Special DTL syntax ==> Dynamic HTML response
+
+ {{}} ==>Interpolation syntax This is to inject a dynamic content in this place , placeholder
+
+ filters ==> django template template website has multiple filters through which we can 
+ use and enhance our html file  For eg. {{month | title}} this will highlight the title 
+
+ for tag syntax ==> {%for month in months%}
+                    {%endfor%}
+
+url tag is equivalent to reverse function  => to fetch the path and links
+{% url "month-challenge" month %}
+
+if tage==> {%if text is not None%}
+           {% elif text == 0%}
+           {%else%}
+           {%endif%}
+
+Template Inheritance ==>
+Template inheritance in Django is a powerful feature that promotes code reusability 
+and maintainability in web applications. It allows the creation of a base "skeleton"
+template that contains common elements shared across multiple pages, such as headers,
+footers, navigation bars, and overall layout. Child templates can then extend this
+base template and override or add content to specific sections.     
+
+Block tag ==>
+The block tag is a placeholder that will be replaced by a block in a child 
+template with the same name. In child templates the block tag is content.
+{% block page_title %}My Challenges{% endblock  %}
+{% extends "layout.html" %}
+
+include tag==> this will help to navigation to header sections
+{% include "challenges/includes/header.html" %}
+
+load plugin ==> It is used to load static file and CSS
